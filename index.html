@@ -1,9 +1,44 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="de">
 <head>
-    <title>Promote Your Jawline with the Chin Restainer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
+        .collapsible {
+            background-color: #777;
+            color: white;
+            cursor: pointer;
+            padding: 18px;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 15px;
+        }
+
+        .active, .collapsible:hover {
+            background-color: #555;
+        }
+
+        .collapsible:after {
+            content: '\02795'; /* Unicode character for "plus" sign (+) */
+            font-size: 13px;
+            color: white;
+            float: right;
+            margin-left: 5px;
+        }
+
+        .active:after {
+            content: "\2796"; /* Unicode character for "minus" sign (-) */
+        }
+
+        .content {
+            padding: 0 18px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.2s ease-out;
+            background-color: #f1f1f1;
+        }
+
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -12,7 +47,7 @@
         }
 
         .container {
-            max-width: 800px;
+            max-width: 1000px;
             margin: 0 auto;
             padding: 40px;
             text-align: center;
@@ -36,25 +71,6 @@
             line-height: 1.5;
         }
 
-        .video-wrapper {
-            position: relative;
-            padding-bottom: 56.25%;
-            /* 16:9 aspect ratio */
-            height: 0;
-            margin-bottom: 40px;
-            overflow: hidden;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-
-        .video-wrapper iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-        }
-
         .cta-button {
             display: inline-block;
             padding: 16px 32px;
@@ -70,9 +86,10 @@
             background-color: #e53636;
         }
     </style>
+    <title>Chin Restainer</title>
 </head>
-
 <body>
+
 <div class="container">
     <h1>The Chin Restainer</h1>
     <p>Get the Perfect Jawline!
@@ -80,12 +97,38 @@
         chiseled, confident look. Designed with advanced technology and comfort in mind, this innovative product is here
         to revolutionize your facial fitness routine.</p>
 
+    <div>
         <video width="600" height="315" controls>
             <source src="chinStrapVideo.mp4" type="video/mp4">
             Your browser does not support the video tag.
         </video>
-    <a class="cta-button" href="">Get Yours Now! TEST</a>
-</div>
-</body>
+        <br>
+        <a class="cta-button" href="">Get Yours Now!</a>
+    </div>
 
+    <button class="collapsible" style="margin-top: 50px">Our Storyboard</button>
+    <div class="content">
+        <img src="chinStrap.png" alt="chin restainer">
+    </div>
+
+</div>
+
+<script>
+    var coll = document.getElementsByClassName("collapsible");
+    var i;
+
+    for (i = 0; i < coll.length; i++) {
+        coll[i].addEventListener("click", function() {
+            this.classList.toggle("active");
+            var content = this.nextElementSibling;
+            if (content.style.maxHeight){
+                content.style.maxHeight = null;
+            } else {
+                content.style.maxHeight = content.scrollHeight + "px";
+            }
+        });
+    }
+</script>
+
+</body>
 </html>
